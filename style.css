@@ -38,5 +38,7 @@
 @media (max-width: 990px) {
   .courses {
     flex-direction: column;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
