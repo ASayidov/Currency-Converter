@@ -14,6 +14,31 @@ const getData = async (resurs) => {
   }
   const data = await req.json()
 
+  // color for informer
+  // if (rates.USD.Value > rates.USD.Previous) {
+  //   elementUSD.classList.add('top')
+  // } else {
+  //   elementUSD.classList.add('bottom')
+  // }
+
+  // if (rates.EUR.Value > rates.EUR.Previous) {
+  //   elementEUR.classList.add('top')
+  // } else {
+  //   elementEUR.classList.add('bottom')
+  // }
+
+  // if (rates.UZS.Value > rates.UZS.Previous) {
+  //   elementUZS.classList.add('top')
+  // } else {
+  //   elementUZS.classList.add('bottom')
+  // }
+  return data
+}
+
+
+
+const showRate = (data) => {
+
   rates.USD = data.Valute.USD
   rates.EUR = data.Valute.EUR
   rates.UZS = data.Valute.UZS
@@ -21,16 +46,10 @@ const getData = async (resurs) => {
   elementUSD.textContent = rates.USD.Value.toFixed(2)
   elementEUR.textContent = rates.EUR.Value.toFixed(2)
   elementUZS.textContent = rates.UZS.Value.toFixed(2)
-
-
-
-  return data
-
 }
 
 
-// getData(API).then((value) => {
-//   console.log(value);
-// }).catch((err) => { (console.log(err.message)) })
 
-getData(API)
+getData(API).then((value) => {
+  showRate(value)
+}).catch((err) => { (console.log(err.message)) })
